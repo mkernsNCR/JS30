@@ -35,20 +35,12 @@ document.onkeypress = function(keyboardClickEvent) {
   });
 
   var theKeyES6B = keysMatchedInHTML
-    .filter((keyMatchedInHTML) => keyMatchedInHTML.textContent.toLowerCase() === keyUserPressed)
-
-  
-  // Now, we can figure out what the data-key attribute of the parent of <kbd> is
-  // .parentNode jumps up a DOM level and getAttribute does it's thing
-  keysDataKey = theKeyES6B[0].parentNode.getAttribute('data-key');
+    .filter((keyMatchedInHTML) => keyMatchedInHTML.textContent.toLowerCase() === keyUserPressed);
   
   // Now we can use the data-key found in keysDataKey to get the right audio file and play it
-  document.querySelector('audio[data-key="' + keysDataKey + '"]').play();
+  // This is using a template literal. Note this $ is not jQuery but rather invokes a template literal in JS
+  var playSound = document.querySelector(`audio[data-key="${theKeyES6B[0].parentNode.getAttribute('data-key')}"]`);
+  playSound.currentTime = 0; // rewinds to start each time
+  playSound.play();
+
 }
-
-
-  //console.log(keysMatchedInHTML);
-
-
-
-  //console.log(theKey);
