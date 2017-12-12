@@ -48,14 +48,14 @@
      * Using an ES6 template string to feed degrees in there - notice how we use ${} to define the string literal
      */
     degreesSecond = (currentSecond * 6) + 90;
-    document.querySelector('.second-hand').style['transform'] = `rotate(${degreesSecond}deg`;
+    document.querySelector('.second-hand').style['transform'] = `rotate(${degreesSecond}deg)`;
 
   } 
   
   // Because we run the program every second, from here on we know we just have to add 6 degrees for every second the program runs
   else {
     // Again, use of a template literal
-    document.querySelector('.second-hand').style['transform'] = `rotate(${degreesSecond += 6}deg`;
+    document.querySelector('.second-hand').style['transform'] = `rotate(${degreesSecond += 6}deg)`;
     currentSecond = new Date().getSeconds();
   }
 
@@ -64,12 +64,12 @@
   if (currentMinute === undefined) {
     currentMinute = new Date().getMinutes();
     degreesMinute = (currentMinute * 6) + 90;
-    document.querySelector('.min-hand').style['transform'] = `rotate(${degreesMinute}deg`;
+    document.querySelector('.min-hand').style['transform'] = `rotate(${degreesMinute}deg)`;
   } 
   // If we're at a new second, we need to update the position of the minute hand
   // Same logic - we know if we get to second zero, just move the minute hand 6 degrees from wherever it was
   else if (currentSecond === 0) {
-    document.querySelector('.min-hand').style['transform'] = `rotate(${degreesMinute += 6}deg`;
+    document.querySelector('.min-hand').style['transform'] = `rotate(${degreesMinute += 6}deg)`;
     currentMinute = new Date().getMinutes(); // keep telling time
   }
 
@@ -79,16 +79,16 @@
   if (currentHour === undefined) {
     currentHour = new Date().getHours();
     degreesHour = (currentHour * 30) + 90;
-    document.querySelector('.hour-hand').style['transform'] = `rotate(${degreesHour}deg`;
+    document.querySelector('.hour-hand').style['transform'] = `rotate(${degreesHour}deg)`;
   }
 
   // We know if the minute gets back to 0, we jump the hour hand ahead 30 degrees
   else if (currentMinute === 0) {
-    document.querySelector('.hour-hand').style['transform'] = `rotate(${degreesHour += 30}deg`;
+    document.querySelector('.hour-hand').style['transform'] = `rotate(${degreesHour += 30}deg)`;
     currentHour = new Date().getHours(); // keep telling time
   }
 
-  console.log (currentHour + ":" + currentMinute + ":" + currentSecond);
+  document.getElementById('timestamp').innerHTML = currentHour + ":" + currentMinute + ":" + currentSecond;
  }
 
  // Update currentTime every second
