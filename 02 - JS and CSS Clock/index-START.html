@@ -64,6 +64,16 @@
       top:50%;
     }
 
+    .second-hand, .minute-hand, .hour-hand {
+      transform-origin: center right;
+      transition: transform 0.05s linear;
+      transform-style: preserve-3d;
+    }
+
+    .rotate {
+      transform: rotate(6deg);
+    }
+
   </style>
 
   <script src="js/main.js"></script>
